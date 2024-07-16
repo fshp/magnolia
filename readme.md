@@ -88,7 +88,7 @@ given instance: SemiPrint[Recursive] = SemiPrint.derived
 For Scala 3:
 
 ```scala
-val magnolia = "dev.fshp.magnolia1_3" %% "magnolia" % "1.3.7RC"
+val magnolia = "dev.fshp.magnolia1_3" %% "magnolia" % "1.3.7"
 ```
 
 For Scala 2, see the [scala2 branch](https://github.com/softwaremill/magnolia/tree/scala2).
