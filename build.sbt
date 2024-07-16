@@ -1,6 +1,7 @@
 import com.softwaremill.UpdateVersionInDocs
 import com.softwaremill.SbtSoftwareMillCommon.commonSmlBuildSettings
 import com.softwaremill.Publish.{ossPublishSettings, updateDocs}
+import xerial.sbt.Sonatype.sonatypeCentralHost
 import sbt.url
 
 val scala3 = "3.3.3"
@@ -8,6 +9,7 @@ val scala3 = "3.3.3"
 ThisBuild / dynverTagPrefix := "scala3_shadow-v" // a custom prefix is needed to differentiate tags between scala2 & scala3 versions
 
 val ossPublishSettingsOverride = Seq(
+  sonatypeCredentialHost := sonatypeCentralHost,
   sonatypeProfileName := "dev.fshp",
   organizationHomepage := Some(url("https://github.com/fshp")),
   homepage := Some(url("https://github.com/fshp/magnolia")),
