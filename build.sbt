@@ -1,12 +1,26 @@
 import com.softwaremill.UpdateVersionInDocs
 import com.softwaremill.SbtSoftwareMillCommon.commonSmlBuildSettings
-import com.softwaremill.Publish.{updateDocs, ossPublishSettings}
+import com.softwaremill.Publish.{ossPublishSettings, updateDocs}
+import sbt.url
 
 val scala3 = "3.3.3"
 
-ThisBuild / dynverTagPrefix := "scala3-v" // a custom prefix is needed to differentiate tags between scala2 & scala3 versions
+ThisBuild / dynverTagPrefix := "scala3_shadow-v" // a custom prefix is needed to differentiate tags between scala2 & scala3 versions
 
-val commonSettings = commonSmlBuildSettings ++ ossPublishSettings ++ Seq(
+val ossPublishSettingsOverride = Seq(
+  sonatypeProfileName := "dev.fshp",
+  organizationHomepage := Some(url("https://github.com/fshp")),
+  homepage := Some(url("https://github.com/fshp/magnolia")),
+  developers +=
+    Developer(
+      id = "fshp",
+      name = "Maxim Moseychuk",
+      email = "franchesko.salias.hudro.pedros@gmail.com",
+      url = url("https://github.com/fshp")
+    )
+)
+
+val commonSettings = commonSmlBuildSettings ++ ossPublishSettings ++ ossPublishSettingsOverride ++ Seq(
   scalaVersion := scala3,
   organization := "dev.fshp.magnolia1_3",
   description := "Fast, easy and transparent typeclass derivation for Scala 3",
